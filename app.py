@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 
-app=flask(__name__)
+app=Flask(__name__)
 
 keyword_responses = {
   "hi": "Hello there! 😊",
@@ -31,7 +31,7 @@ def home():
 
 @app.route("/chat", methods = ["POST"])
 def chat():
-    user_input = request.json.get("message", "".lower().strip())
+    user_input = request.json.get("message", "").lower().strip()
     if not user_input:
         return jsonify({"error": "No message provided"}), 400
     
